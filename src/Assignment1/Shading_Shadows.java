@@ -23,7 +23,7 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 	public float l = -0.1f, r = 0.1f, b = -0.1f, t = 0.1f, d = 0.1f, A, B, C, A2, B2, C2, A3, B3, C3;
 	float U, V;
 	public Vectors u, v, w, e, D, ray;
-	public Spheres center, right, left;
+	public Spheres green, blue, red;
 
 	public Shading_Shadows() {
 
@@ -53,9 +53,9 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 		w = new Vectors(0, 0, 1);
 		e = new Vectors(0, 0, 0);
 		Vectors light = new Vectors(-4, 4, -3);
-		center = new Spheres(0, 0, -7, 2);
-		right = new Spheres(4, 0, -7, 1);
-		left = new Spheres(-4, 0, -7, 1);
+		green = new Spheres(0, 0, -7, 2);
+		blue = new Spheres(4, 0, -7, 1);
+		red = new Spheres(-4, 0, -7, 1);
 		float[] pixelValues = new float[width * height * 3];
 
 
@@ -74,12 +74,12 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 				D = D.unitV();
 
 
-				float disc1 = center.intersect(D, e);
-				float disc2 = right.intersect(D, e);
-				float disc3 = left.intersect(D, e);
+				float disc1 = green.intersect(D, e);
+				float disc2 = blue.intersect(D, e);
+				float disc3 = red.intersect(D, e);
 
 				if(disc1 > 0){            		
-					float t = center.getT(D, e);              		
+					float t = green.getT(D, e);              		
 					float max, max2; 
 
 					Vectors intsecP = D.ScalarMult(t);   
@@ -93,9 +93,9 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 
 					l = l.unitV();
 
-					Vectors n = new Vectors((intsecP.getX() - center.getX()), 
-							(intsecP.getY() - center.getY()), 
-							(intsecP.getZ() - center.getZ()));              		
+					Vectors n = new Vectors((intsecP.getX() - green.getX()), 
+							(intsecP.getY() - green.getY()), 
+							(intsecP.getZ() - green.getZ()));              		
 					n = n.unitV();       
 
 					Vectors Ka = new Vectors(0.0f, 0.2f, 0.0f);
@@ -118,7 +118,7 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 						max2 = (float) n.dot(h);
 					}
 					Vectors L;
-					if(left.intersect(l, intsecP) > 0){
+					if(red.intersect(l, intsecP) > 0){
 						L = Ka;
 					}else{       
 
@@ -133,16 +133,16 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 					pixelValues[i + 1] = (float) Math.pow(L.getY(), 1.0 /2.2f); 
 					pixelValues[i + 2] = (float) Math.pow(L.getZ(), 1.0 /2.2f);
 				}else if(disc2 > 0){
-					float t = right.getT(D, e);              		
+					float t = blue.getT(D, e);              		
 					float SP = 0.0f, max, max2; 
 
 					Vectors intsecP = D.ScalarMult(t);   
 					Vectors View = new Vectors(intsecP.getX() * -1f, intsecP.getY() * -1f, intsecP.getZ() * -1f);
 					Vectors l = light.sub(intsecP);
 					l = l.unitV();  
-					Vectors n = new Vectors((intsecP.getX() - right.getX()) / right.getRadius(), 
-							(intsecP.getY() - right.getY()) / right.getRadius(), 
-							(intsecP.getZ() - right.getZ()) / right.getRadius());              		
+					Vectors n = new Vectors((intsecP.getX() - blue.getX()) / blue.getRadius(), 
+							(intsecP.getY() - blue.getY()) / blue.getRadius(), 
+							(intsecP.getZ() - blue.getZ()) / blue.getRadius());              		
 					n = n.unitV();       
 
 					Vectors Ka = new Vectors(0, 0, 0.2f);
@@ -162,7 +162,7 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 						max2 = (float) n.dot(h);
 					}
 					Vectors L;
-					if(left.intersect(l, intsecP) > 0 || center.intersect(l, intsecP) > 0){
+					if(red.intersect(l, intsecP) > 0 || green.intersect(l, intsecP) > 0){
 						L = Ka;
 					}else{
 
@@ -177,16 +177,16 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 					pixelValues[i + 1] = (float) Math.pow(L.getY(), 1.0 /2.2f); 
 					pixelValues[i + 2] = (float) Math.pow(L.getZ(), 1.0 /2.2f);
 				}else if(disc3 > 0){
-					float t = left.getT(D, e);              		
+					float t = red.getT(D, e);              		
 					float SP = 0.0f, max, max2; 
 
 					Vectors intsecP = D.ScalarMult(t);           		            		 
 					Vectors l = light.sub(intsecP);
 					l = l.unitV(); 
 
-					Vectors n = new Vectors((intsecP.getX() - left.getX()) / left.getRadius(), 
-							(intsecP.getY() - left.getY()) / left.getRadius(), 
-							(intsecP.getZ() - left.getZ()) / left.getRadius());              		
+					Vectors n = new Vectors((intsecP.getX() - red.getX()) / red.getRadius(), 
+							(intsecP.getY() - red.getY()) / red.getRadius(), 
+							(intsecP.getZ() - red.getZ()) / red.getRadius());              		
 					n = n.unitV();       
 
 					Vectors Ka = new Vectors(0.2f, 0, 0);
@@ -256,7 +256,7 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 						}
 						Vectors L = new Vectors(0, 0, 0);
 
-						if(left.intersect(l, intsecP) > 0 || center.intersect(l, intsecP) > 0 || right.intersect(l, intsecP) > 0){
+						if(red.intersect(l, intsecP) > 0 || green.intersect(l, intsecP) > 0 || blue.intersect(l, intsecP) > 0){
 							Vectors La = Ka;
 							L = La;
 						}else{
