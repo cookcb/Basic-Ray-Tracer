@@ -1,12 +1,18 @@
 package Assignment1;
 
-public class Spheres {
-	float x, y, z, radius;
-	public Spheres(float x, float y, float z, float radius){
+
+public class Spheres implements Surfaces{
+	float x, y, z, radius, SP;
+	Vectors ka, kd, ks;
+	public Spheres(float x, float y, float z, float radius, float SP, Vectors ka, Vectors kd, Vectors ks){
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.radius = radius;
+		this.SP = SP;
+		this.ka = ka;
+		this.kd = kd;
+		this.ks = ks;
 	}
 	public float getX(){
 		return this.x;
@@ -21,6 +27,27 @@ public class Spheres {
 	}
 	public float getRadius(){
 		return this.radius;
+	}
+	public Vectors getKS() {
+		return ks;
+	}
+	public Vectors getKA() {
+		return ks;
+	}
+	public Vectors getKD() {
+		return kd;
+	}
+	
+	public Vectors getNormal(Vectors intersection) {
+		Vectors normal;
+		normal = new Vectors((intersection.getX() - this.getX()), 
+				(intersection.getY() - this.getY()), 
+				(intersection.getZ() - this.getZ()));
+		return normal;
+	}
+	public float getSpecular() {
+		
+		return 0;
 	}
 	public float intersect(Vectors Direction,  Vectors viewPoint){
 		float A, B, C, discrim;
@@ -55,5 +82,6 @@ public class Spheres {
 		return result;
 
 	}
+	
 
 }

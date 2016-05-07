@@ -55,9 +55,9 @@ public class white_circles extends JFrame implements GLEventListener {
 		w = new Vectors(0, 0, 1);
 		e = new Vectors(0, 0, 0);
 
-		green = new Spheres(0, 0, -7, 2);
-		blue = new Spheres(4, 0, -7, 1);
-		red = new Spheres(-4, 0, -7, 1);
+		green = new Spheres(0, 0, -7, 2, 32.0f, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
+		blue = new Spheres(4, 0, -7, 1, 0, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
+		red = new Spheres(-4, 0, -7, 1, 0, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
 		float[] pixelValues = new float[width * height * 3];
 
 
@@ -75,12 +75,11 @@ public class white_circles extends JFrame implements GLEventListener {
 				U = (U - 0.1f);
 				V = (V - 0.1f);
 				Vectors D = new Vectors(U, V, -d);
-
 				D = D.unitV();
-
-				float disc1 = green.intersect(D, e);
-				float disc2 = blue.intersect(D, e);
-				float disc3 = red.intersect(D, e);
+				Ray eyeRay = new Ray(D, e);
+				float disc1 = green.intersect(eyeRay.getDirection(), eyeRay.getPoint());
+				float disc2 = blue.intersect(eyeRay.getDirection(), eyeRay.getPoint());
+				float disc3 = red.intersect(eyeRay.getDirection(), eyeRay.getPoint());
 
 				if(disc1 > 0){            		
 					pixelValues[i + 0] = 255; // red
