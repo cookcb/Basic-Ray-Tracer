@@ -22,8 +22,6 @@ public class Anti_Aliasing extends JFrame implements GLEventListener{
 	
 	public final static int  dimension = 512;
 	public float l = -0.1f, r = 0.1f, b = -0.1f, t = 0.1f, d = 0.1f, A, B, C, A2, B2, C2, A3, B3, C3;
-	float U, V;
-	public Vectors u, v, w, e, D, ray;
 	public Spheres green, blue, red;
 
 	public Anti_Aliasing() {
@@ -49,16 +47,19 @@ public class Anti_Aliasing extends JFrame implements GLEventListener{
 	}
 
 	public Buffer renderScene() {
+		Vectors u, v, w, e;
+		Vectors light = new Vectors(-4, 4, -3);
+		float U, V;
+		float[] pixelValues = new float[width * height * 3];
+		int count = 64;
 		u = new Vectors(1, 0, 0);
 		v = new Vectors(0, 1, 0);
 		w = new Vectors(0, 0, 1);
 		e = new Vectors(0, 0, 0);
-		Vectors light = new Vectors(-4, 4, -3);
-		green = new Spheres(0, 0, -7, 2);
-		blue = new Spheres(4, 0, -7, 1);
-		red = new Spheres(-4, 0, -7, 1);
-		float[] pixelValues = new float[width * height * 3];
-		int count = 64;
+		green = new Spheres(0, 0, -7, 2, 32.0f, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
+		blue = new Spheres(4, 0, -7, 1, 0, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
+		red = new Spheres(-4, 0, -7, 1, 0, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
+		
 
 		for(int q = 0; q < count; q++){
 			Random rand = new Random();
