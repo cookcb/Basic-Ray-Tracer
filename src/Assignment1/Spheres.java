@@ -47,7 +47,7 @@ public class Spheres implements Surfaces{
 	}
 	public float getSpecular() {
 		
-		return 0;
+		return SP;
 	}
 	public float intersect(Vectors Direction,  Vectors viewPoint){
 		float A, B, C, discrim;
