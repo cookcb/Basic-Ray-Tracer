@@ -4,6 +4,10 @@ import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.util.Random;
 
+import A4.Ray;
+import A4.Surfaces;
+import A4.Vectors;
+
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLCapabilities;
@@ -280,7 +284,37 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 		return FloatBuffer.wrap(pixelValues);
 
 	}
+	public Vectors Phong(Surfaces object, Ray eyeRay, Vectors normal, Vectors intsecP, Vectors light, Vectors ambient, Vectors diffuse, Vectors specular, float SP){
+		Vectors phong = new Vectors(0, 0, 0);
+		boolean shadows = false;
 
+		for(int i = 0; i < objects.length; i++){
+			if(object == objects[i]){
+
+			}else if(objects[i].getT(light, intsecP) > 0){
+				shadows = true;
+			}
+		}
+		//base color
+		if(shadows == true){
+			phong = ambient;
+		}else{
+			float max, max2;
+
+			max = (float) Math.max(0, normal.dot(light));
+			Vectors Ld = diffuse.ScalarMult(max);      		
+			Vectors test = eyeRay.getDirection();
+			Vectors h;
+			h = test.add(light);
+			h = h.unitV();            		            		
+
+			max2 = (float) Math.max(0, normal.dot(h));
+			Vectors Ls = specular.ScalarMult((float) Math.pow(max2, 32));           		
+			phong = ambient.add(Ld);
+			phong = phong.add(Ls); 
+		}
+		return phong;
+	}
 	public void display(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
