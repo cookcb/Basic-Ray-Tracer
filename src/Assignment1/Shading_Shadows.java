@@ -24,10 +24,10 @@ public class Shading_Shadows extends JFrame implements GLEventListener {
 	public float l = -0.1f, r = 0.1f, b = -0.1f, t = 0.1f, d = 0.1f, A, B, C, A2, B2, C2, A3, B3, C3;
 	Vectors lightSource = new Vectors(-4, 4, -3);	
 	Spheres green = new Spheres(0, 0, -7, 2, 32.0f, new Vectors(0.0f, 0.2f, 0.0f), new Vectors(0.0f, 0.5f, 0.0f), new Vectors(0.5f, 0.5f, 0.5f));
-	Spheres blue = new Spheres(4, 0, -7, 1, 0, new Vectors(0, 0, 0.2f), new Vectors(0, 0, 1), new Vectors(0, 0, 0));
-	Spheres red = new Spheres(-4, 0, -7, 1, 0, new Vectors(0.2f, 0, 0), new Vectors(1, 0, 0), new Vectors(0, 0, 0));
+	Spheres blue = new Spheres(-4 , 0, -7, 1, 0, new Vectors(0, 0, 0.2f), new Vectors(0, 0, 1), new Vectors(0, 0, 0));
+	Spheres red = new Spheres(4, 0, -7, 1, 0, new Vectors(0.2f, 0, 0), new Vectors(1, 0, 0), new Vectors(0, 0, 0));
 	Plane plane = new Plane(new Vectors(0, 1 ,0), 0, new Vectors(0.2f, 0.2f, 0.2f), new Vectors(1f, 1f, 1f), new Vectors(0f, 0f, 0f), new Vectors(0, -2, 0));
-	Surfaces[] objects = {green, blue, red, plane};
+	Surfaces[] objects = {green, red, blue, plane};
 
 	public Shading_Shadows() {
 
