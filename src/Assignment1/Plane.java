@@ -1,24 +1,25 @@
 package Assignment1;
 
 public class Plane implements Surfaces{
-	Vectors normal, ambient, kd, ks, pointOn;
-	float alpha;
-	public Plane(Vectors normal, Vectors ambient, Vectors kd, Vectors ks, float alpha, Vectors pointOn){
+	Vectors normal, ka, kd, ks, pointOn;
+	float alpha, SP;
+	public Plane(Vectors normal, float SP, Vectors ka, Vectors kd, Vectors ks, Vectors pointOn){
 		this.normal = normal;
-		this.ambient = ambient;
+		this.ka = ka;
 		this.kd = kd;
 		this.ks = ks;
+		this.SP = SP;
 		this.alpha = alpha;
 		this.pointOn = pointOn;
 	}
 	public float getSpecular(){
-		return 0;
+		return SP;
 	}
 	public float getAlpha(){
 		return alpha;
 	}
-	public Vectors getAmbient(){
-		return ambient;
+	public Vectors getKA(){
+		return ka;
 	}
 	public Vectors getKD(){
 		return kd;
@@ -46,4 +47,6 @@ public class Plane implements Surfaces{
 		T = (float) pointOn.sub(viewPoint).dot(normal) / (float) Direction.dot(normal);
 		return T;
 	}
+	
+
 }
