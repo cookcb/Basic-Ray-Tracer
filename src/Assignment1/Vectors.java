@@ -33,8 +33,8 @@ public class Vectors {
 	}
 	public Vectors add(Vectors v){
 		Vectors addedVector = new Vectors(v.getX() + this.getX(), 
-				this.y = v.getY() + this.getY(), 
-				this.z = v.getZ() + this.getZ());
+				v.getY() + this.getY(), 
+				v.getZ() + this.getZ());
 		return addedVector;
 	}
 	public Vectors sub(Vectors v){
