@@ -124,8 +124,8 @@ public class Anti_Aliasing extends JFrame implements GLEventListener{
 			}
 		}
 		//To average out the pixel values for anti-aliasing
-		for(int sandra = 0; sandra < width * height * 3; sandra++){
-			pixelValues[sandra] = pixelValues[sandra] / 64;
+		for(int w = 0; w < width * height * 3; w++){
+			pixelValues[w] = pixelValues[w] / 64;
 		}
 		return FloatBuffer.wrap(pixelValues);
 
