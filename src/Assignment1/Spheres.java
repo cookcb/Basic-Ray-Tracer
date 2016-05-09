@@ -32,7 +32,7 @@ public class Spheres implements Surfaces{
 		return ks;
 	}
 	public Vectors getKA() {
-		return ks;
+		return ka;
 	}
 	public Vectors getKD() {
 		return kd;
@@ -49,20 +49,20 @@ public class Spheres implements Surfaces{
 		
 		return SP;
 	}
-	public float intersect(Vectors Direction,  Vectors viewPoint){
-		float A, B, C, discrim;
-		//Vectors V = new Vectors(-1.0f * this.getX() , -1.0f * this.getY(), -1.0f * this.getZ());
-
-		A = (Direction.getX() * Direction.getX()) + (Direction.getY() * Direction.getY()) + (Direction.getZ() * Direction.getZ());
-
-		B = 2 * ((Direction.getX()*(viewPoint.getX()-this.getX())) + (Direction.getY() * (viewPoint.getY() - this.getY())) + (Direction.getZ() * (viewPoint.getZ() - this.getZ())));
-
-		C = ((viewPoint.getX() - this.getX()) * (viewPoint.getX() - this.getX())) + ((viewPoint.getY() - this.getY()) * (viewPoint.getY() - this.getY())) + ((viewPoint.getZ() - this.getZ()) * (viewPoint.getZ() - this.getZ())) - (this.getRadius() * this.getRadius());
-
-		discrim = (B * B) - 4*A*C;
-		
-		return discrim;
-	}
+//	public float intersect(Vectors Direction,  Vectors viewPoint){
+//		float A, B, C, discrim;
+//		//Vectors V = new Vectors(-1.0f * this.getX() , -1.0f * this.getY(), -1.0f * this.getZ());
+//
+//		A = (Direction.getX() * Direction.getX()) + (Direction.getY() * Direction.getY()) + (Direction.getZ() * Direction.getZ());
+//
+//		B = 2 * ((Direction.getX()*(viewPoint.getX()-this.getX())) + (Direction.getY() * (viewPoint.getY() - this.getY())) + (Direction.getZ() * (viewPoint.getZ() - this.getZ())));
+//
+//		C = ((viewPoint.getX() - this.getX()) * (viewPoint.getX() - this.getX())) + ((viewPoint.getY() - this.getY()) * (viewPoint.getY() - this.getY())) + ((viewPoint.getZ() - this.getZ()) * (viewPoint.getZ() - this.getZ())) - (this.getRadius() * this.getRadius());
+//
+//		discrim = (B * B) - 4*A*C;
+//		
+//		return discrim;
+//	}
 	public float getT(Vectors Direction,  Vectors viewPoint){
 		float t1, t2, result = 0;
 		float A, B, C;
@@ -82,6 +82,7 @@ public class Spheres implements Surfaces{
 		return result;
 
 	}
+	
 	
 
 }

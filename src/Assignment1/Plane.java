@@ -39,14 +39,4 @@ public class Plane implements Surfaces{
 	public Vectors getNormal(Vectors intersection) {
 		return normal;
 	}
-	public float intersect(Vectors Direction, Vectors viewPoint) {
-		float T;
-		if( (float) Direction.dot(normal)==0){
-			return -1f;
-		}
-		T = (float) pointOn.sub(viewPoint).dot(normal) / (float) Direction.dot(normal);
-		return T;
-	}
-	
-
 }
