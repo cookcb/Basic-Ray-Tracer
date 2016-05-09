@@ -77,9 +77,9 @@ public class white_circles extends JFrame implements GLEventListener {
 				Vectors D = new Vectors(U, V, -d);
 				D = D.unitV();
 				Ray eyeRay = new Ray(D, e);
-				float disc1 = green.intersect(eyeRay.getDirection(), eyeRay.getPoint());
-				float disc2 = blue.intersect(eyeRay.getDirection(), eyeRay.getPoint());
-				float disc3 = red.intersect(eyeRay.getDirection(), eyeRay.getPoint());
+				float disc1 = green.getT(eyeRay.getDirection(), eyeRay.getPoint());
+				float disc2 = blue.getT(eyeRay.getDirection(), eyeRay.getPoint());
+				float disc3 = red.getT(eyeRay.getDirection(), eyeRay.getPoint());
 
 				if(disc1 > 0){            		
 					pixelValues[i + 0] = 255; // red
