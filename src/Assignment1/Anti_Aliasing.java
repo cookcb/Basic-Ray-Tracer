@@ -13,21 +13,23 @@ import com.jogamp.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
 public class Anti_Aliasing extends JFrame implements GLEventListener{
 
-
-
+	//Size of JFrame/Image
 	final int width = 512;
 	final int height = 512;
 
 	Buffer scene;
 	Vectors lightSource = new Vectors(-4, 4, -3);	
+	//Creation of different objects
 	Spheres green = new Spheres(0, 0, -7, 2, 32.0f, new Vectors(0.0f, 0.2f, 0.0f), new Vectors(0.0f, 0.5f, 0.0f), new Vectors(0.5f, 0.5f, 0.5f));
 	Spheres blue = new Spheres(-4 , 0, -7, 1, 0, new Vectors(0.2f, 0, 0), new Vectors(1, 0, 0), new Vectors(0, 0, 0));
 	Spheres red = new Spheres(4, 0, -7, 1, 0, new Vectors(0, 0, 0.2f), new Vectors(0, 0, 1), new Vectors(0, 0, 0));
 	Plane plane = new Plane(new Vectors(0, 1 ,0), 0, new Vectors(0.2f, 0.2f, 0.2f), new Vectors(1f, 1f, 1f), new Vectors(0f, 0f, 0f), new Vectors(0, -2, 0));
+	
+	//Array to hold the 4 different objects
 	Surfaces[] objects = {green, red, blue, plane};
 
 	public Anti_Aliasing() {
-
+		//Creation of JFrame
 		super("Anti Aliasing");
 		this.scene = renderScene();
 
@@ -47,7 +49,7 @@ public class Anti_Aliasing extends JFrame implements GLEventListener{
 		this.setResizable(false);
 		canvas.requestFocusInWindow();
 	}
-
+	//Creation/Rendering of Scene
 	public Buffer renderScene() {
 		float d = 0.1f;
 		float U, V;
