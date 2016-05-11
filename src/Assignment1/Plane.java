@@ -9,7 +9,6 @@ public class Plane implements Surfaces{
 		this.kd = kd;
 		this.ks = ks;
 		this.SP = SP;
-		this.alpha = alpha;
 		this.pointOn = pointOn;
 	}
 	public float getSpecular(){
@@ -18,6 +17,7 @@ public class Plane implements Surfaces{
 	public float getAlpha(){
 		return alpha;
 	}
+	//Obtains the Ambient, Specular, and Diffuse factors
 	public Vectors getKA(){
 		return ka;
 	}
@@ -27,6 +27,7 @@ public class Plane implements Surfaces{
 	public Vectors getKS(){
 		return ks;
 	}
+	//Obtains the closest value at which the direction vector hits the plane
 	public float getT(Vectors Direction, Vectors viewPoint){
 		float T;
 		if( (float) Direction.dot(normal)==0){

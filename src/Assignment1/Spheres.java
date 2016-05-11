@@ -14,20 +14,21 @@ public class Spheres implements Surfaces{
 		this.kd = kd;
 		this.ks = ks;
 	}
+	//X, Y, Z values for the center of the sphere
 	public float getX(){
 		return this.x;
 	}
-
 	public float getY(){
 		return this.y;
 	}
-
 	public float getZ(){
 		return this.z;
 	}
+	
 	public float getRadius(){
 		return this.radius;
 	}
+	
 	//Retrieves the specular factor
 	public Vectors getKS() {
 		return ks;
@@ -41,6 +42,7 @@ public class Spheres implements Surfaces{
 		return kd;
 	}
 	
+	//Obtains normal vector from that goes through a point on the sphere
 	public Vectors getNormal(Vectors intersection) {
 		Vectors normal;
 		normal = new Vectors((intersection.getX() - this.getX()), 
