@@ -22,7 +22,6 @@ public class white_circles extends JFrame implements GLEventListener {
 
 	Buffer scene;
 	public float l = -0.1f, r = 0.1f, bottom = -0.1f, top = 0.1f, d = 0.1f;
-	float U, V;
 	public Vectors u, v, w, e;
 
 	public white_circles() {
@@ -48,11 +47,8 @@ public class white_circles extends JFrame implements GLEventListener {
 	}
 
 	public Buffer renderScene() {
-		Vectors u = new Vectors(1, 0, 0);
-		Vectors v = new Vectors(0, 1, 0);
-		Vectors w = new Vectors(0, 0, 1);
 		Vectors e = new Vectors(0, 0, 0);
-
+		//All the objects
 		Spheres green = new Spheres(0, 0, -7, 2, 32.0f, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
 		Spheres blue = new Spheres(4, 0, -7, 1, 0, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
 		Spheres red = new Spheres(-4, 0, -7, 1, 0, new Vectors(0, 0, 0), new Vectors(0, 0, 0), new Vectors(0, 0, 0));
@@ -64,14 +60,15 @@ public class white_circles extends JFrame implements GLEventListener {
 				int i = (y * height) + x;
 				i *= 3;
 
-				U = x / 512f;
-				V = y / 512f;
+				float U = x / 512f;
+				float V = y / 512f;
 
 				U = U * (float) 0.2;
 				V = V * (float) 0.2;
 
 				U = (U - 0.1f);
 				V = (V - 0.1f);
+				//Viewing Ray
 				Vectors D = new Vectors(U, V, -d);
 				D = D.unitV();
 				Ray eyeRay = new Ray(D, e);
