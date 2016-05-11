@@ -28,12 +28,15 @@ public class Spheres implements Surfaces{
 	public float getRadius(){
 		return this.radius;
 	}
+	//Retrieves the specular factor
 	public Vectors getKS() {
 		return ks;
 	}
+	//Retrieves the Ambient factor
 	public Vectors getKA() {
 		return ka;
 	}
+	//Retrieves the Diffuse factor
 	public Vectors getKD() {
 		return kd;
 	}
@@ -45,6 +48,7 @@ public class Spheres implements Surfaces{
 				(intersection.getZ() - this.getZ()));
 		return normal;
 	}
+	//retrieves the specular power value
 	public float getSpecular() {
 		
 		return SP;
