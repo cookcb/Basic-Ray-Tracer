@@ -21,7 +21,6 @@ public class white_circles extends JFrame implements GLEventListener {
 	final int height = 512;
 
 	Buffer scene;
-	public final static int  dimension = 512;
 	public float l = -0.1f, r = 0.1f, bottom = -0.1f, top = 0.1f, d = 0.1f, A, B, C, A2, B2, C2, A3, B3, C3;
 	float U, V;
 	public Vectors u, v, w, e, D, ray;
