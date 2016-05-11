@@ -53,7 +53,7 @@ public class Spheres implements Surfaces{
 		
 		return SP;
 	}
-
+	//Obtains the closest value at which the direction vector hits the sphere 
 	public float getT(Vectors Direction,  Vectors viewPoint){
 		float t1, t2, result = 0;
 		float A, B, C;
