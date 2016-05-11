@@ -14,9 +14,6 @@ public class Plane implements Surfaces{
 	public float getSpecular(){
 		return SP;
 	}
-	public float getAlpha(){
-		return alpha;
-	}
 	//Obtains the Ambient, Specular, and Diffuse factors
 	public Vectors getKA(){
 		return ka;
@@ -37,6 +34,7 @@ public class Plane implements Surfaces{
 		return T;
 		
 	}
+	//Retrieves the Normal vector for the plane
 	public Vectors getNormal(Vectors intersection) {
 		return normal;
 	}
