@@ -11,6 +11,7 @@ public class Plane implements Surfaces{
 		this.SP = SP;
 		this.pointOn = pointOn;
 	}
+	//Retrieves the specular power value for the plane
 	public float getSpecular(){
 		return SP;
 	}
