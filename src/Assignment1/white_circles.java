@@ -20,7 +20,7 @@ public class white_circles extends JFrame implements GLEventListener {
 	final int width = 512;
 	final int height = 512;
 	Buffer scene;
-	
+
 
 	public white_circles() {
 
@@ -70,7 +70,7 @@ public class white_circles extends JFrame implements GLEventListener {
 				Vectors D = new Vectors(U, V, -d);
 				D = D.unitV();
 				Ray eyeRay = new Ray(D, e);
-				
+
 				//Calculating intersection points
 				float disc1 = green.getT(eyeRay.getDirection(), eyeRay.getPoint());
 				float disc2 = blue.getT(eyeRay.getDirection(), eyeRay.getPoint());
@@ -88,14 +88,8 @@ public class white_circles extends JFrame implements GLEventListener {
 					pixelValues[i + 0] = 255; // red
 					pixelValues[i + 1] = 255; // green
 					pixelValues[i + 2] = 255; // blue	
-				}else{
-					pixelValues[i + 0] = 0; // red
-					pixelValues[i + 1] = 0; // green
-					pixelValues[i + 2] = 0; // blue
 				}
 			}
-
-
 		}            	
 
 
